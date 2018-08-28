@@ -1,2 +1,6 @@
 # WeBecameTheCodeWeMade
-Algorithm and data structure in C for class at Universidade Federal de Pelotas
+###################################
+Computer Science - UFPEL 
+Mateus Cordova da Siva Santos
+###################################
+Algorithm and data structure
