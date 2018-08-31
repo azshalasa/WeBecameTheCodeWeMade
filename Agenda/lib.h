@@ -1,6 +1,9 @@
 struct Agenda{
-    double cphone;
+    int cphone;
     char name[10];
 };
+
 void menu();
-void refreshVar(int *op, int *lp, struct Agenda, struct Agenda, void *pBuffer);
+void refreshVar(void *pBuffer, void **op, void **count, void **lp);
+void AddTo(void *pBuffer);
+void PrintAll(void *pBuffer);
