@@ -8,26 +8,37 @@ int main()
     void *op;
     void *count;
     void *lp;
+    struct Agenda *FirstC;
+    struct Agenda *LastC;
 
     pBuffer = (void*)malloc((sizeof(int)*3));
     *(int *)pBuffer = 0; // Menu de Opção
     *(int *)(pBuffer + sizeof(int)) = 0; // Looping
     *(int *)(pBuffer + (2*sizeof(int))) = 0; // Variavel Contadora
-    refreshVar(pBuffer, &op, &count, &lp);
 
-    printf("--------\n");
-    printf("OP : %i\n", op);
-    printf("CO : %i\n", *(int *)count);
-    printf("LP : %i\n", *(int *)lp);
+    refreshVar(pBuffer, &op, &count, &lp, &FirstC, &LastC);
+    AddTo(pBuffer, count);
+    refreshVar(pBuffer, &op, &count, &lp, &FirstC, &LastC);
+    //AddTo(pBuffer, count);
+
+    struct Agenda * test;
+    test = pBuffer + (sizeof(int)*3) + ( *(int *)count * sizeof(struct Agenda));
+    printf("Phone : %d\n", test->cphone);
+    printf("Nome  : %s \n", test->name);
 
 
+    /*AddTo(pBuffer, *(int *)op);
+    refreshVar(pBuffer, &op, &count, &lp, &FirstC, &LastC);
+
+    test = pBuffer + (sizeof(int)*3) + ( *(int *)count * sizeof(struct Agenda));
+    printf("Phone : %d\n", test->cphone);
+    printf("Nome  : %s \n", test->name); */
+
+    //PrintAll(pBuffer, &FirstC, &LastC);
     //AddTo(pBuffer);
-    //PrintAll(pBuffer);
-    //struct Agenda * test;
-    //test = pBuffer + (sizeof(int)*3) + sizeof(struct Agenda);
-    //printf("Ce : %d\n", test->cphone);
-    //printf("No : %s\n", test->name);
-    //printf("Co : %d\n", *(int *)(pBuffer + (2*sizeof(int))));
+    //refreshVar(pBuffer, &op, &count, &lp, &FirstC, &LastC);
+    //printf("%d", *(int *)(pBuffer + (2*sizeof(int))));
+
 
     return 0;
 }
