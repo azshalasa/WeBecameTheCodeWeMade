@@ -18,6 +18,8 @@ int main()
     pBuffer = AddTo(pBuffer, count);
     refreshVar(pBuffer, &op, &count, &lp);
     PrintAll(pBuffer, count, lp);
+    pBuffer = AddTo(pBuffer, count);
+    refreshVar(pBuffer, &op, &count, &lp);
 
     return 0;
 }
