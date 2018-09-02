@@ -8,37 +8,16 @@ int main()
     void *op;
     void *count;
     void *lp;
-    struct Agenda *FirstC;
-    struct Agenda *LastC;
 
-    pBuffer = (void*)malloc((sizeof(int)*3));
-    *(int *)pBuffer = 0; // Menu de Opção
-    *(int *)(pBuffer + sizeof(int)) = 0; // Looping
-    *(int *)(pBuffer + (2*sizeof(int))) = 0; // Variavel Contadora
+    pBuffer = (void*)malloc((sizeof(int)*3));               // Aloca os 3 inteiros descritos abaixo no inicio do programa
+    *(int *)pBuffer = 0;                                    // Variavel para Menu de Opção
+    *(int *)(pBuffer + sizeof(int)) = 0;                    // Variavel para Looping
+    *(int *)(pBuffer + (2*sizeof(int))) = 0;                // Variavel para Contar
+    refreshVar(pBuffer, &op, &count, &lp);                  // Função que atualiza os ponteiros locais de main
 
-    refreshVar(pBuffer, &op, &count, &lp, &FirstC, &LastC);
-    AddTo(pBuffer, count);
-    refreshVar(pBuffer, &op, &count, &lp, &FirstC, &LastC);
-    //AddTo(pBuffer, count);
-
-    struct Agenda * test;
-    test = pBuffer + (sizeof(int)*3) + ( *(int *)count * sizeof(struct Agenda));
-    printf("Phone : %d\n", test->cphone);
-    printf("Nome  : %s \n", test->name);
-
-
-    /*AddTo(pBuffer, *(int *)op);
-    refreshVar(pBuffer, &op, &count, &lp, &FirstC, &LastC);
-
-    test = pBuffer + (sizeof(int)*3) + ( *(int *)count * sizeof(struct Agenda));
-    printf("Phone : %d\n", test->cphone);
-    printf("Nome  : %s \n", test->name); */
-
-    //PrintAll(pBuffer, &FirstC, &LastC);
-    //AddTo(pBuffer);
-    //refreshVar(pBuffer, &op, &count, &lp, &FirstC, &LastC);
-    //printf("%d", *(int *)(pBuffer + (2*sizeof(int))));
-
+    pBuffer = AddTo(pBuffer, count);
+    refreshVar(pBuffer, &op, &count, &lp);
+    PrintAll(pBuffer, count, lp);
 
     return 0;
 }
