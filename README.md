@@ -1,6 +1,6 @@
 # WeBecameTheCodeWeMade
 ---------------------
 Computer Science - UFPEL 
-Mateus Cordova da Siva Santos
+Mateus Cordova da Silva Santos
 ---------------------
 Algorithm and data structure
