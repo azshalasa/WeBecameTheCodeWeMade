@@ -8,4 +8,3 @@ void refreshVar(void *pBuffer, void **op, void **count, void **lp);
 void *AddTo(void *pBuffer, void *count);
 void *RemoveTo(void *pBuffer, void *count, void *lp);
 void PrintAll(void *pBuffer, void *count, void *lp);
-
