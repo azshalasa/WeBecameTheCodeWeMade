@@ -48,7 +48,7 @@ void *RemoveTo(void *pBuffer, void *count, void *lp){
                 Aux = pBuffer + (3 * sizeof(int)) + (sizeof(struct Agenda));
                 Aux1 = pBuffer + (3 * sizeof(int)) + ((*(int *)lp) * (sizeof(struct Agenda))) + sizeof(struct Agenda);
                 if(Note->cphone == Aux->cphone){
-                    Aux->cphone = Aux1->cphone;
+                    Aux->cphone = Aux1->cphone; // Fazer um for aqui dentro para mover a galera da direira pra esquerda
                 }
             }
 
