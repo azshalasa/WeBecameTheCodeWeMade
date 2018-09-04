@@ -16,7 +16,7 @@ void refreshVar(void *pBuffer, void **op, void **count, void **lp){
 // *count   = Ponteiro tipo int para variavel de contagem
 void *AddTo(void *pBuffer, void *count){
         *(int *)count = (*(int *)count) + 1;
-        pBuffer = realloc(pBuffer,      (3 * sizeof(int)) + ( (*(int *)count) * sizeof(struct Agenda)));
+        pBuffer = realloc(pBuffer,      (3 * sizeof(int)) + ( (*(int *)count) * sizeof(struct Agenda))); // PUTA QUE A CARALHA PERDE REFERENCIA DETRO DO WINDOWS DEPOIS DO REALLOC !#@$#%¨$#&
         struct Agenda * test;
         test = pBuffer + (3 * sizeof(int)) + ( (*(int *)(pBuffer + (2*sizeof(int)))) * sizeof(struct Agenda));
         printf("-----------------\n");
