@@ -19,13 +19,42 @@ int main()
     Note->cphone = 99;
     Note->name[0] = 'x';
 
-    pBuffer = AddTo(pBuffer, count);
-    refreshVar(pBuffer, &op, &count, &lp);
-    pBuffer = RemoveTo(pBuffer, count, lp);
-    refreshVar(pBuffer, &op, &count, &lp);
+        do{
+        printf("-----------------------\n");
+        printf("-----    Agenda    ----\n");
+        printf("-----------------------\n");
+        printf("- 1 > Adicionar       -\n");
+        printf("- 2 > Remover         -\n");
+        printf("- 3 > Listar          -\n");
+        printf("- 4 > Buscar          -\n");
+        printf("-----------------------\n");
+        printf("- ");
+        scanf("%d", (int *)op);
 
-    PrintAll(pBuffer, count, lp);
+        switch (*(int *)op){
 
+            case 1:
+                pBuffer = AddTo(pBuffer, count);
+                refreshVar(pBuffer, &op, &count, &lp);
+            break;
+
+            case 2:
+                pBuffer = RemoveTo(pBuffer, count, lp);
+                refreshVar(pBuffer, &op, &count, &lp);
+            break;
+
+            case 3:
+                PrintAll(pBuffer, count, lp);
+            break;
+
+            case 4:
+                //SearchTo(pBuffer, count, lp);
+            break;
+
+            default:
+                break;
+        }
+    }while(*(int *)op != 0);
 
     return 0;
 }
