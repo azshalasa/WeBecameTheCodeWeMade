@@ -15,15 +15,18 @@ void refreshVar(void *pBuffer, void **op, void **count, void **lp){
 // pBuffer  = Ponteiro tipo void para o buffer
 // *count   = Ponteiro tipo int para variavel de contagem
 void *AddTo(void *pBuffer, void *count){
+        printf("\033[H\033[J");
         *(int *)count = (*(int *)count) + 1;
-        pBuffer = realloc(pBuffer,      (3 * sizeof(int)) + ( (*(int *)count) * sizeof(struct Agenda))); // PUTA QUE A CARALHA PERDE REFERENCIA DETRO DO WINDOWS DEPOIS DO REALLOC !#@$#%¨$#&
+        pBuffer = realloc(pBuffer,      (3 * sizeof(int)) + ( (*(int *)(pBuffer + (2*sizeof(int)))) * sizeof(struct Agenda))); // PUTA QUE A CARALHA PERDE REFERENCIA DETRO DO WINDOWS DEPOIS DO REALLOC !#@$#%¨$#&
         struct Agenda * test;
         test = pBuffer + (3 * sizeof(int)) + ( (*(int *)(pBuffer + (2*sizeof(int)))) * sizeof(struct Agenda));
-        printf("-----------------\n");
-        printf("Digite o Numero\n");
+        printf("-----------------------\n");
+        printf("Digite o Numero:\n");
+        printf("- ");
         scanf("%d", &test->cphone);
-        printf("Digite o Nome\n");
+        printf("Digite o Nome:\n");
         __fpurge(stdin);
+        printf("- ");
         fgets (test->name , (sizeof(char)*10) , stdin);
         return pBuffer;
 }
@@ -32,7 +35,7 @@ void *AddTo(void *pBuffer, void *count){
 // *count   = Ponteiro tipo int para variavel de contagem
 // *lp      = Ponteiro tipo int para variavel de looping
 void *RemoveTo(void *pBuffer, void *count, void *lp){
-
+        printf("\033[H\033[J");
         struct Agenda * Note;
         Note = pBuffer + (3 * sizeof(int)) + sizeof(struct Agenda);
         printf("-----------------\n");
@@ -62,12 +65,15 @@ void *RemoveTo(void *pBuffer, void *count, void *lp){
 // *count   = Ponteiro tipo int para variavel de contagem
 // *lp      = Ponteiro tipo int para variavel de looping
 void PrintAll(void *pBuffer, void *count, void *lp){
+    printf("\033[H\033[J");
     if(*(int *)count > 0){
         struct Agenda * Note;
             for(*(int *)lp = 2; *(int *)lp <= *(int *)count; (*(int *)lp)++){
                 Note = pBuffer + (3 * sizeof(int)) + ( (*(int *)lp) * sizeof(struct Agenda));
-                printf("\nPhone:%d\n", Note->cphone);
-                printf("Name:%s\n", Note->name);
+                printf("-----------------------\n");
+                printf("----------- Contato %d\n", (*(int *)lp)-1);
+                printf("- Phone:%d\n", Note->cphone);
+                printf("- Name:%s", Note->name);
             }
         }
 }
