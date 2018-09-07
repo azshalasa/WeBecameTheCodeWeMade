@@ -56,6 +56,7 @@ int main()
                 break;
         }
     }while(*(int *)op != 0);
-
+    
+    free(pBuffer);
     return 0;
 }
