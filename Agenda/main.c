@@ -39,7 +39,7 @@ int main()
             break;
 
             case 2:
-                pBuffer = RemoveTo(pBuffer, count, lp);
+                pBuffer = RemoveTo(pBuffer, count, lp, op);
                 refreshVar(pBuffer, &op, &count, &lp);
             break;
 
@@ -48,7 +48,7 @@ int main()
             break;
 
             case 4:
-                //SearchTo(pBuffer, count, lp);
+                SearchTo(pBuffer, count, lp, op);
             break;
 
             default:
