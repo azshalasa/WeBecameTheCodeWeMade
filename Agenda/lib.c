@@ -3,6 +3,7 @@
 #include <string.h>
 #include "lib.h"
 
+
 // RefresVar
 // pBuffer  = Ponteiro tipo void para o buffer
 // *count   = Ponteiro para ponteiro tipo void
