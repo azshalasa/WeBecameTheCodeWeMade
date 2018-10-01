@@ -28,6 +28,9 @@ int main()
         printf("- 2 > Remover         -\n");
         printf("- 3 > Listar          -\n");
         printf("- 4 > Buscar          -\n");
+        printf("- 5 > Insertion       -\n");
+        printf("- 6 > Selection       -\n");
+        printf("- 7 > Bubble          -\n");
         printf("-----------------------\n");
         printf("- ");
         scanf("%d", (int *)op);
@@ -52,11 +55,26 @@ int main()
                 SearchTo(pBuffer, count, lp, op);
             break;
 
+            case 5:
+                Insertion(pBuffer, count, lp, op);
+                PrintAll(pBuffer, count, lp);
+            break;
+
+            case 6:
+                Selection(pBuffer, count, lp, op);
+                PrintAll(pBuffer, count, lp);
+            break;
+
+            case 7:
+                Bubble(pBuffer, count, lp, op);
+                PrintAll(pBuffer, count, lp);
+            break;
+
             default:
                 break;
         }
     }while(*(int *)op != 0);
-    
+
     free(pBuffer);
     return 0;
 }
