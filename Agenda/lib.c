@@ -170,3 +170,138 @@ void SearchTo(void *pBuffer, void *count, void *lp, void *op){
     printf("- 404 Not Found xD    -\n");
     return;
 }
+
+/* Sort Functions */
+
+// Bubble    = função tipo ponteiro para void, deve retornar ponteiro para pBuffer
+// pBuffer  = Ponteiro tipo void para o buffer
+// *count   = Ponteiro tipo int para variavel de contagem
+void Bubble(void *pBuffer, void *count, void *lp, void *op){
+    printf("\033[H\033[J");
+    struct Agenda * Note;
+    struct Agenda * NoteAux;
+    struct Agenda * Swap;
+    Swap = pBuffer + (3 * sizeof(int)) + (sizeof(struct Agenda));
+
+
+    printf("-----------------------\n");
+    printf("----------- Bubble Sort\n");
+
+        for(*(int *)lp = 1; *(int *)lp <= *(int *)count; (*(int *)lp)++){
+            Note = pBuffer + (3 * sizeof(int)) + ( (*(int *)lp) * sizeof(struct Agenda));
+            for(*(int *)op = (*(int *)lp)+1; *(int *)op <= *(int *)count; (*(int *)op)++){
+                NoteAux = pBuffer + (3 * sizeof(int)) + ( (*(int *)op) * sizeof(struct Agenda));
+                if(strcmp(NoteAux->name, Note->name) < 0){
+                    strcpy(Swap->name, Note->name);
+                    Swap->cphone = Note->cphone;
+
+                    strcpy(Note->name, NoteAux->name);
+                    Note->cphone = NoteAux->cphone;
+
+                    strcpy(NoteAux->name, Swap->name);
+                    NoteAux->cphone = Swap->cphone;
+                }
+            }
+        }
+ *(int *)op = 1; // Garantir que nunca vai sair do while no main
+}
+// Insertion    = função tipo ponteiro para void, deve retornar ponteiro para pBuffer
+// pBuffer  = Ponteiro tipo void para o buffer
+// *count   = Ponteiro tipo int para variavel de contagem
+void Insertion(void *pBuffer, void *count, void *lp, void *op){
+    printf("\033[H\033[J");
+    struct Agenda * Note;
+    struct Agenda * NoteAux;
+    struct Agenda * Swap;
+    Swap = pBuffer + (3 * sizeof(int)) + (sizeof(struct Agenda));
+
+
+    printf("-----------------------\n");
+    printf("-------- Insertion Sort\n");
+
+        for(*(int *)lp = 1; *(int *)lp <= *(int *)count; (*(int *)lp)++){
+            Note = pBuffer + (3 * sizeof(int)) + ( (*(int *)lp) * sizeof(struct Agenda));
+            strcpy(Swap->name, Note->name);
+            Swap->cphone = Note->cphone;
+
+            for(*(int *)op = (*(int *)lp)-1; ((*(int *)op) >= 0) && (strcmp(NoteAux->name, Note->name) > 0); (*(int *)op)--){
+                NoteAux = pBuffer + (3 * sizeof(int)) + ( ((*(int *)op)+1) * sizeof(struct Agenda));
+                Note = pBuffer + (3 * sizeof(int)) + ( (*(int *)op) * sizeof(struct Agenda));
+
+                strcpy(NoteAux->name, Note->name);
+                NoteAux->cphone = Note->cphone;
+            }
+            NoteAux = pBuffer + (3 * sizeof(int)) + ( ((*(int *)op)+1) * sizeof(struct Agenda));
+            strcpy(NoteAux->name, Swap->name);
+            NoteAux->cphone = Swap->cphone;
+        }
+ *(int *)op = 1; // Garantir que nunca vai sair do while no main
+}
+// Selection    = função tipo ponteiro para void, deve retornar ponteiro para pBuffer
+// pBuffer  = Ponteiro tipo void para o buffer
+// *count   = Ponteiro tipo int para variavel de contagem
+void Selection(void *pBuffer, void *count, void *lp, void *op){
+    printf("\033[H\033[J");
+    struct Agenda * Note;
+    struct Agenda * NoteAux;
+    struct Agenda * Swap;
+    Swap = pBuffer + (3 * sizeof(int)) + (sizeof(struct Agenda));
+
+    int min; /// JURA que vou abrir um espaço no pBuffer por causa deste inteiro kkkkkkkkkkkkkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+
+    printf("-----------------------\n");
+    printf("-------- Selection Sort\n");
+
+        for(*(int *)lp = 1; *(int *)lp <= (*(int *)count)-1; (*(int *)lp)++){
+            min = *(int *)lp;
+            for(*(int *)op = (*(int *)lp)+1; *(int *)op <= *(int *)count; (*(int *)op)++){
+                NoteAux = pBuffer + (3 * sizeof(int)) + ( min * sizeof(struct Agenda));
+                Note = pBuffer + (3 * sizeof(int)) + ( (*(int *)op) * sizeof(struct Agenda));
+                if(strcmp(Note->name, NoteAux->name) < 0){
+                    min = *(int *)op;
+                }
+            }
+            NoteAux = pBuffer + (3 * sizeof(int)) + ( min * sizeof(struct Agenda));
+            Note = pBuffer + (3 * sizeof(int)) + ( (*(int *)lp) * sizeof(struct Agenda));
+            if(strcmp(Note->name, NoteAux->name) != 0){
+                    strcpy(Swap->name, Note->name);
+                    Swap->cphone = Note->cphone;
+
+                    strcpy(Note->name, NoteAux->name);
+                    Note->cphone = NoteAux->cphone;
+
+                    strcpy(NoteAux->name, Swap->name);
+                    NoteAux->cphone = Swap->cphone;
+            }
+        }
+ *(int *)op = 1; // Garantir que nunca vai sair do while no main
+}
+// Random
+// pBuffer  = Ponteiro tipo void para o buffer
+// *count   = Ponteiro tipo int para variavel de contagem
+void Random(void *pBuffer, void *count, void *lp, void *op){
+    printf("\033[H\033[J");
+    struct Agenda * Note;
+    struct Agenda * NoteAux;
+    struct Agenda * Swap;
+    Swap = pBuffer + (3 * sizeof(int)) + (sizeof(struct Agenda));
+
+
+    printf("-----------------------\n");
+    printf("----------- Random Sort\n");
+
+        for(*(int *)lp = 1; *(int *)lp <= *(int *)count; (*(int *)lp)++){
+            Note = pBuffer + (3 * sizeof(int)) + ( (*(int *)lp) * sizeof(struct Agenda));
+            NoteAux = pBuffer + (3 * sizeof(int)) + ( (*(int *)op) * sizeof(struct Agenda));
+
+                    strcpy(Swap->name, Note->name);
+                    Swap->cphone = Note->cphone;
+
+                    strcpy(Note->name, NoteAux->name);
+                    Note->cphone = NoteAux->cphone;
+
+                    strcpy(NoteAux->name, Swap->name);
+                    NoteAux->cphone = Swap->cphone;
+        }
+ *(int *)op = 1; // Garantir que nunca vai sair do while no main
+}
