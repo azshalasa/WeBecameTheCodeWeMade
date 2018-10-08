@@ -70,6 +70,11 @@ int main()
                 PrintAll(pBuffer, count, lp);
             break;
 
+            case 0:
+                Random(pBuffer, count, lp, op);
+                PrintAll(pBuffer, count, lp);
+            break;
+
             default:
                 break;
         }
