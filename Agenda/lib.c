@@ -291,8 +291,8 @@ void Random(void *pBuffer, void *count, void *lp, void *op){
     printf("----------- Random Sort\n");
 
         for(*(int *)lp = 1; *(int *)lp <= *(int *)count; (*(int *)lp)++){
-            Note = pBuffer + (3 * sizeof(int)) + ( (*(int *)lp) * sizeof(struct Agenda));
-            NoteAux = pBuffer + (3 * sizeof(int)) + ( (*(int *)op) * sizeof(struct Agenda));
+            Note = pBuffer + (3 * sizeof(int)) + (( rand()%(*(int *)count)+1) * sizeof(struct Agenda));
+            NoteAux = pBuffer + (3 * sizeof(int)) + (( rand()%(*(int *)count)+1) * sizeof(struct Agenda));
 
                     strcpy(Swap->name, Note->name);
                     Swap->cphone = Note->cphone;
